@@ -35,6 +35,5 @@ function save() {
 비밀번호 : <input type="password" name="password"><br>
 파일 : <input type="file" name="file"/><br>
 <textarea id="info" name="info"></textarea>
-<input type="button" value="저장" onclick="save();">
-
+<input type="button" value="저장" onclick="document.getElementById('frm').submit();">
 </form>
