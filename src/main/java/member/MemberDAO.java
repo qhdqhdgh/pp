@@ -1,4 +1,4 @@
-package test;
+package member;
 
 import java.util.List;
 
@@ -7,17 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TestDAO {
+public class MemberDAO {
 
 	@Autowired 
 	private SqlSessionTemplate sqlSession;
 	
-	public List<TestVO> select(TestVO vo) {
-		return sqlSession.selectList("test.select.selectMember", vo);
+	public List<MemberVO> select(MemberVO vo) {
+		return sqlSession.selectList("member.selectMember", vo);
 	}
 	
-	public int insert(TestVO vo) {
-		return sqlSession.insert("test.select.insertMember", vo);
+	public int insert(MemberVO vo) {
+		return sqlSession.insert("member.insertMember", vo);
 	}
 
 }

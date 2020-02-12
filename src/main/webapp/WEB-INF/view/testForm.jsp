@@ -28,8 +28,8 @@ function save() {
 	
 }
 </script>
-<h2>test</h2>
-<form id="frm" action="testInsert.do" method="post" enctype="multipart/form-data">
+<h2>Member</h2>
+<form id="frm" action="memberInsert.do" method="post" enctype="multipart/form-data">
 이메일 : <input type="text" name="email"><br>
 이름 : <input type="text" name="name"><br>
 비밀번호 : <input type="password" name="password"><br>

@@ -1,9 +1,9 @@
-package test;
+package member;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-public class TestVO {
+public class MemberVO {
 
 	private int id;
 	private String name;

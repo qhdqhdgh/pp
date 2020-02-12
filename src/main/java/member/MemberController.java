@@ -1,4 +1,4 @@
-package test;
+package member;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,25 +16,25 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
-public class TestController {
+public class MemberController {
 	private static final String UPLOAD_PATH = "/upload/test/";
 	@Autowired
-	private TestDAO testDao;
+	private MemberDAO memberDao;
 
-	@RequestMapping({"/test.do", "/test2.do"})
-	public String test(Model model, TestVO vo) {
-		List<TestVO> list = testDao.select(vo);
+	@RequestMapping({"/member.do", "/member2.do"})
+	public String memberList(Model model, MemberVO vo) {
+		List<MemberVO> list = memberDao.select(vo);
 		model.addAttribute("list", list);
-		return "test";
+		return "memberList";
 	}
 	
-	@RequestMapping("/testForm.do")
-	public String testForm(Model model, TestVO vo) {
-		return "testForm";
+	@RequestMapping("/memberInsertForm.do")
+	public String memberInsertForm(Model model, MemberVO vo) {
+		return "memberInsertForm";
 	}
 	
-	@RequestMapping("/testInsert.do")
-	public String testInsert(Model model, TestVO vo, @RequestParam("file") MultipartFile file, HttpServletRequest req) {
+	@RequestMapping("/memberInsert.do")
+	public String memberInsert(Model model, MemberVO vo, @RequestParam("file") MultipartFile file, HttpServletRequest req) {
 				
 		// 파일업로드
 		//System.out.println(req.getRealPath(UPLOAD_PATH));
@@ -54,7 +54,7 @@ public class TestController {
 			System.out.println(e.toString());
 		}
 		
-		testDao.insert(vo);
-		return "redirect:/test.do";
+		memberDao.insert(vo);
+		return "redirect:/member.do";
 	}
 }
