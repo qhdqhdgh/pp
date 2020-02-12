@@ -303,7 +303,8 @@ function test() {
 	<div id="header">
 		<h1><a href="<%=util.Property.contextPath%>/index.do">개인 포트폴리오</a><a href="javascript:;" onclick="test()">&nbsp;&nbsp;&nbsp;</a></h1>
 		<ul class="topmenu">
-			<li class="logout"></li>
+			<li class="login"><a href="memberInsertForm.do">로그인</a></li>
+			<li class="logout">로그아웃</li>
 			<li class="homepage"><a href="http://gdu.co.kr" target="_blank">팀프로젝트</a></li>
 		</ul>
 	</div>

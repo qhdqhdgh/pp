@@ -17,11 +17,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class MemberController {
-	private static final String UPLOAD_PATH = "/upload/test/";
+	private static final String UPLOAD_PATH = "/upload/member/";
 	@Autowired
 	private MemberDAO memberDao;
 
-	@RequestMapping({"/member.do", "/member2.do"})
+	@RequestMapping({"/memberList.do", "/member2.do"})
 	public String memberList(Model model, MemberVO vo) {
 		List<MemberVO> list = memberDao.select(vo);
 		model.addAttribute("list", list);
@@ -34,20 +34,20 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/memberInsert.do")
-	public String memberInsert(Model model, MemberVO vo, @RequestParam("file") MultipartFile file, HttpServletRequest req) {
+	public String memberInsert(Model model, MemberVO vo, @RequestParam("filename") MultipartFile filename, HttpServletRequest req) {
 				
 		// 파일업로드
-		//System.out.println(req.getRealPath(UPLOAD_PATH));
+		System.out.println(req.getRealPath(UPLOAD_PATH));
 		String fileExt = "";
 		int i = -1;
-		if ((i = file.getOriginalFilename().lastIndexOf(".")) != -1) {
-			fileExt = file.getOriginalFilename().substring(i);
+		if ((i = filename.getOriginalFilename().lastIndexOf(".")) != -1) {
+			fileExt = filename.getOriginalFilename().substring(i);
 		}
 		// 파일명 랜덤 생성
 		String fileName = new Date().getTime() + fileExt;
 		try {
-			if (!file.getOriginalFilename().isEmpty()) {
-				file.transferTo(new File(req.getRealPath(UPLOAD_PATH), fileName)); // 파일저장
+			if (!filename.getOriginalFilename().isEmpty()) {
+				filename.transferTo(new File(req.getRealPath(UPLOAD_PATH), fileName)); // 파일저장
 				vo.setFilename(fileName); // 파일명 vo에 set
 			}
 		} catch (IOException e) {
@@ -55,6 +55,6 @@ public class MemberController {
 		}
 		
 		memberDao.insert(vo);
-		return "redirect:/member.do";
+		return "redirect:/memberList.do";
 	}
 }
