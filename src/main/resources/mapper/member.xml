@@ -9,5 +9,13 @@
 		INSERT INTO spring5fs.member (id, password, name, regdate, filename, info) values
 		(#{id}, #{password}, #{name}, now(), #{filename}, #{info})
 	</insert>
+	
+	<select id="logincheck" resultType="member.MemberVO" parameterType="member.MemberVO">
+		select * from spring5fs.member where id=#{id} and password=#{password}
+	</select>
+	
+	<delete id="deleteMember" parameterType="member.MemberVO">
+		delete from spring5fs.member where no=#{no}
+	</delete>
 </mapper>
 

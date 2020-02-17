@@ -8,7 +8,7 @@
 	이름 : ${data.name} <br>
 	가입일 : ${data.regdate}<br>
 	<c:if test="${!empty data.filename}">
-	사진 : <img src="<c:url value="/upload/member/${data.filename}"/>" width="10px" height="10px">
+	사진 : <img src="<c:url value="/upload/member/${data.filename}"/>" width="100px" height="100px">
 	</c:if>
 	${data.info }
 	<br>

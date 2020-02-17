@@ -33,7 +33,7 @@ function save() {
 아이디 : <input type="text" name="id"><br>
 비밀번호 : <input type="password" name="password"><br>
 이름 : <input type="text" name="name"><br>
-파일 : <input type="file" name="filename"/><br>
+파일 : <input type="file" name="file"/><br>
 <textarea id="info" name="info"></textarea>
 <input type="button" value="저장" onclick="document.getElementById('frm').submit();">
 </form>

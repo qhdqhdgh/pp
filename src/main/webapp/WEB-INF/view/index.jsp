@@ -1,3 +1,4 @@
+<%@page import="member.MemberVO"%>
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page import="util.*" %>
 <!doctype html>
@@ -5,6 +6,7 @@
 <head>
 <title><%=util.Property.title %></title>
 <%@ include file="/WEB-INF/view//include/headHtml.jsp" %>
+<%MemberVO vo = (MemberVO)session.getAttribute("member"); %>
 <script type="text/javascript">
 function directionTop() {
 	$('html, body').animate({scrollTop: 0 }, 'slow');
@@ -303,9 +305,14 @@ function test() {
 	<div id="header">
 		<h1><a href="<%=util.Property.contextPath%>/index.do">개인 포트폴리오</a><a href="javascript:;" onclick="test()">&nbsp;&nbsp;&nbsp;</a></h1>
 		<ul class="topmenu">
-			<li class="login"><a href="memberInsertForm.do">로그인</a></li>
-			<li class="logout">로그아웃</li>
-			<li class="homepage"><a href="http://gdu.co.kr" target="_blank">팀프로젝트</a></li>
+		<%if(vo != null){ %>
+			<li><%=vo.getId() %>님 환영합니다</li>
+			<li class="logout"><a href="memberLogout.do">로그아웃</a></li>
+			<li class="myInfo"><a href="myInfo.do">내정보</a></li>
+		<%}else{ %>
+			<li class="logi0n"><a href="memberLoginPage.do">로그인</a></li>			
+			<li class="signup"><a href="memberInsertForm.do">회원가입</a></li>
+		<%} %>			
 		</ul>
 	</div>
 	<!--//header-->

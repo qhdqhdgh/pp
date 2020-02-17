@@ -19,5 +19,13 @@ public class MemberDAO {
 	public int insert(MemberVO vo) {
 		return sqlSession.insert("member.insertMember", vo);
 	}
+	
+	public MemberVO logincheck(MemberVO vo) {		
+		return sqlSession.selectOne("member.logincheck", vo);
+	}
+	
+	public int delete(MemberVO vo) {		
+		return sqlSession.delete("member.deleteMember", vo);
+	}
 
 }
