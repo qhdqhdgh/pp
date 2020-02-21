@@ -3,6 +3,8 @@ package main;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import vo.ReplyVO;
+
 @Controller
 public class MainController {
 
@@ -23,5 +25,12 @@ public class MainController {
 	@RequestMapping("/myinfo/myinfo.do")
 	public String myinfo() {
 		return "myinfo/myinfo";
+	}
+	
+	@RequestMapping("/replyInsert.do")
+	public String replyInsert(ReplyVO vo) {
+		
+		
+		return "/portfolio/notice/index.do";
 	}
 }

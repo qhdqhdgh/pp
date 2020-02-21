@@ -36,7 +36,7 @@ function goSave() {
 	<!--//pageTitle-->
 	<!--//search-->
 	<div class="write">
-		<form name="frm" id="frm" action="process.do" method="POST" enctype="multipart/form-data">
+		<form name="frm" id="frm" action="replyInsert.do" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="cmd" value="write">
 		<table>
 			<colgroup>
