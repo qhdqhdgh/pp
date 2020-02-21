@@ -3,11 +3,11 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/smarteditor/js/HuskyEZCreator.js"></script>
 <script>
-$(function() {
-	var oEditors = [];
+var oEditors = [];
+$(function() {	
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditors,
-		elPlaceHolder: "info", // textarea ID
+		elPlaceHolder: "info", //textarea ID
 		sSkinURI: "<%=request.getContextPath()%>/smarteditor/SmartEditor2Skin.html",	
 		htParams : {
 			bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -19,14 +19,20 @@ $(function() {
 		}, //boolean
 		fOnAppLoad : function(){
 			//예제 코드
-			//oEditors.getById["contents"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+			oEditors.getById["info"].exec("PASTE_HTML", ["자기소개를 적어주세요"]);			
 		},
 		fCreator: "createSEditor2"
 	});
-});
-function save() {
 	
+	
+});
+
+function InsertInfo(){
+	
+	oEditors.getById["info"].exec("UPDATE_CONTENTS_FIELD", []);
+	document.getElementById('frm').submit();
 }
+
 </script>
 <h2>Member</h2>
 <form id="frm" action="memberInsert.do" method="post" enctype="multipart/form-data">
@@ -35,5 +41,5 @@ function save() {
 이름 : <input type="text" name="name"><br>
 파일 : <input type="file" name="file"/><br>
 <textarea id="info" name="info"></textarea>
-<input type="button" value="저장" onclick="document.getElementById('frm').submit();">
+<input type="button" value="저장" onclick="InsertInfo();">
 </form>

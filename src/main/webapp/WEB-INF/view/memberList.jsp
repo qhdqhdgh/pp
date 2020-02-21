@@ -10,6 +10,11 @@
 	<c:if test="${!empty data.filename}">
 	사진 : <img src="<c:url value="/upload/member/${data.filename}"/>" width="100px" height="100px">
 	</c:if>
-	${data.info }
+	<br>
+	자기소개 : ${data.info }
+	<br>
+	<br>
 	<br>
 </c:forEach>
+<br>
+<br>

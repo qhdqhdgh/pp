@@ -39,7 +39,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/memberInsert.do")
-	public String memberInsert(Model model, MemberVO vo, @RequestParam("file") MultipartFile file, HttpServletRequest req) {
+	public String memberInsert(Model model, MemberVO vo, @RequestParam("file") MultipartFile file, HttpServletRequest req,
+			@RequestParam(name="info", required = false) String info) {
 				
 		// 파일업로드
 		//System.out.println(req.getRealPath(UPLOAD_PATH));
@@ -57,8 +58,8 @@ public class MemberController {
 			}
 		} catch (IOException e) {
 			System.out.println(e.toString());
-		}
-		
+		}		
+
 		memberDao.insert(vo);
 		return "redirect:/memberList.do";
 	}
